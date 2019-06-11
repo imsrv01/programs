@@ -20,12 +20,12 @@ Output:
 much.very.program.this.like.i
 mno.pqr
 '''
-
-for i in range(int(input("Enter input:"))):
+int x = int(input("Enter input:"))
+print("Output : ")
+for i in range():
     inputString = input()
     s = inputString.split(".")
     s.reverse()
-    print("Output:")
     for j in range(len(s)):
         if (j != len(s)-1):
             print(s[j], end=".")

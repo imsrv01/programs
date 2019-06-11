@@ -22,7 +22,7 @@ mno.pqr
 '''
 x = int(input("Enter input:"))
 print("Output : ")
-for i in range():
+for i in range(x):
     inputString = input()
     s = inputString.split(".")
     s.reverse()

@@ -20,7 +20,7 @@ Output:
 much.very.program.this.like.i
 mno.pqr
 '''
-int x = int(input("Enter input:"))
+x = int(input("Enter input:"))
 print("Output : ")
 for i in range():
     inputString = input()

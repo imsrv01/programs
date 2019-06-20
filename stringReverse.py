@@ -20,6 +20,7 @@ Output:
 much.very.program.this.like.i
 mno.pqr
 '''
+#Solution 1
 x = int(input("Enter input:"))
 print("Output : ")
 for i in range(x):
@@ -31,3 +32,10 @@ for i in range(x):
             print(s[j], end=".")
         else:
             print(s[j])
+
+            
+#Solution 2
+t=int(input())
+while(t):
+    print(".".join(input().split(".")[::-1]))
+    t-=1

@@ -10,6 +10,29 @@ Input : Word
 Output : ['W', 'o', 'r', 'd']
 
 '''
+# Solution
+
+def splitString(str):
+  targetList=[]
+  for i in range(len(str)): # Charcters are retrived using string parsing
+    character = str[i:i+1:]
+    targetList.append(character)
+  return targetList
+
+str = "geeks"
+arr = splitString(str)
+print(arr)
+
+# Solution
+def splitString(str):
+  targetList=[]
+  for i in str: # Characters are retrived using iterator
+    targetList.append(i)
+  return targetList
+
+str = "geeks"
+arr = splitString(str)
+print(arr)
 
 # SOLUTION 1
 

@@ -1,5 +1,22 @@
 '''
 Print digit pattern
+
+Input : 41325
+Output :
+|****
+|*
+|***
+|**
+|*****
+Explanation: for a given integer print the number of *’s that are equivalent to each digit in the integer. Here the first digit is 4 so print four *sin the first line. The second digit is 1 so print one *. So on and the last i.e., the fifth digit is 5 hence print five *s in the fifth line.
+
+Input : 60710
+Output :
+|******
+|
+|*******
+|*
+|
 '''
 
 #Solution 1

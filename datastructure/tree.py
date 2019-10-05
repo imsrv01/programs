@@ -15,25 +15,25 @@ class BSTree:
         else:
             items.sort()
             self.root = createBST(self.root, items, 0, len(items))
-        
-    
+
+
 #Height of tree = MAX (Height of left tree, Height of right tree) + 1
 #Height of empty node is -1
 def height(root):
     if root == None:
         return -1
-    
+
     lheight = height(root.left)
     rheight = height(root.right)
-    
+
     if lheight > rheight:
         max = lheight
     else:
         max = rheight
-    
+
     return (max + 1)
 
-# Minimum Node pointer       
+# Minimum Node pointer
 def findMin(root):
     if root == None:
         return False
@@ -48,19 +48,26 @@ def findMax(root):
 
     while(root.right != None):
         root = root.right
-    return root   
+    return root
 
-# find a node - return true/false
+# search for a node and return node reference
 def search(root, data):
     if root == None:
-        return False
+        return root
     if root.data == data:
-        return True
+        return root
     elif data > root.data:
         return search(root.right, data)
     else:
         return search(root.left, data)
 
+# check if node present - return true/false
+def present(root, data):
+    noderef = search(root,data)
+    if noderef:
+        return True
+    else:
+        return False
 # Add element
 def insert(root,data):
     if root == None:
@@ -78,7 +85,7 @@ def insert(root,data):
             insert(root.left, data)
     return root
 
-# Remove element            
+# Remove element
 def remove(root, data):
     if root == None:
         return root
@@ -123,7 +130,7 @@ def DFT_Inorder(root, items):
     items.append(root.data)
     DFT_Inorder(root.right, items)
     return items
-    
+
 def DFT_Preorder(root):
     if root == None:
         return
@@ -137,19 +144,70 @@ def DFT_Postorder(root):
     DFT_Postorder(root.left)
     DFT_Postorder(root.right)
     print(root.data)
-    
+
 def createBST(root, list1, low, high):
     if low < high:
-        pivot = (low + high)//2 
+        pivot = (low + high)//2
         data = list1[pivot]
-        
+
         root = Node(data)
-        
+
         root.left= createBST(root.left,list1, low , pivot)
         root.right = createBST(root.right, list1, pivot+1 , high)
-        
+
         return root
-    
+
+
+def successor(root, data):
+
+    temp = search(root, data)
+    if temp.right != None:
+        minref = findMin(temp.right)
+        return minref.data
+    else:
+        ancestor = root
+        successor = None
+        while ancestor != temp:
+            if temp.data < ancestor.data:
+                successor = ancestor
+                ancestor = ancestor.left
+            else:
+                ancestor = ancestor.right
+        if successor:
+            return successor.data
+        else:
+            return successor
+
+def predeccessor(root, data):
+
+    temp = search(root, data)
+    if temp.left != None:
+        maxref = findMax(temp.left)
+        return maxref.data
+    else:
+        ancestor = root
+        predeccessor = None
+        while ancestor != temp:
+            if temp.data > ancestor.data:
+                predeccessor = ancestor
+                ancestor = ancestor.right
+            else:
+                ancestor = ancestor.left
+        if predeccessor:
+            return predeccessor.data
+        else:
+            return predeccessor
+
+def verifyIfBST(root, min, max):
+    if root == None:
+        return True
+    if root.data > min and root.data < max and verifyIfBST(root.left, min, root.data) and verifyIfBST(root.right, root.data, max):
+        return True
+    else:
+        return False
+
+
+
 root = Node(75)
 root.left = Node(65)
 root.left.left = Node(55)
@@ -166,7 +224,7 @@ print('Height of tree is {}'.format(height(root)))
 
 # Search
 checkifpresent = 105
-print("{} present ? - {}".format(checkifpresent, search(root, checkifpresent)))
+print("{} present ? - {}".format(checkifpresent, present(root, checkifpresent)))
 
 # Insert
 insertdata = 66
@@ -184,14 +242,14 @@ root = insert(root, 2)
 BFT(root)
 print("")
 checkifpresent = insertdata
-print("{} present ? - {}".format(checkifpresent, search(root, checkifpresent)))
+print("{} present ? - {}".format(checkifpresent, present(root, checkifpresent)))
 
 # remove
 removedata = 105
 print("Removing - ", removedata)
 root = remove(root,removedata)
 checkifpresent = removedata
-print("{} present ? - {}".format(checkifpresent, search(root, checkifpresent)))
+print("{} present ? - {}".format(checkifpresent, present(root, checkifpresent)))
 
 # BFT
 #print(root.data)
@@ -223,3 +281,8 @@ print("Preorder - ")
 DFT_Preorder(root)
 print("Postorder - ")
 DFT_Postorder(root)
+
+print('successor - ', successor(root,66))
+print('predeccessor - ', predeccessor(root,66))
+
+print('IS BST ? - ', verifyIfBST(root, 0 , 500))

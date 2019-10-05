@@ -114,8 +114,30 @@ def BFT(root):
             q.append(temp.right)
         print(temp.data, end=" ")
 
-      
 
+def DFT_Inorder(root, items):
+    if root == None:
+        return
+    DFT_Inorder(root.left, items)
+    #print(root.data)
+    items.append(root.data)
+    DFT_Inorder(root.right, items)
+    return items
+    
+def DFT_Preorder(root):
+    if root == None:
+        return
+    print(root.data)
+    DFT_Preorder(root.left)
+    DFT_Preorder(root.right)
+
+def DFT_Postorder(root):
+    if root == None:
+        return
+    DFT_Postorder(root.left)
+    DFT_Postorder(root.right)
+    print(root.data)
+    
 def createBST(root, list1, low, high):
     if low < high:
         pivot = (low + high)//2 
@@ -192,3 +214,12 @@ BFT(temp1)
 print('')
 bst = BSTree(list1)
 BFT(bst.root)
+
+# DFT
+print("Inorder - ")
+items = DFT_Inorder(root, items=[])
+print(items)
+print("Preorder - ")
+DFT_Preorder(root)
+print("Postorder - ")
+DFT_Postorder(root)

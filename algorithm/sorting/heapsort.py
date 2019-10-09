@@ -32,6 +32,7 @@ def heapSort(arr):
 
     print('extract elements')
     # One by one extract elements
+    # start with list end element (n-1), and do this till second last element 1, notice 0 - it is not included...
     for i in range(n-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i] # swap
         heapify(arr, i, 0)

@@ -80,6 +80,13 @@ def dijkstra(g, start_vertex):
                 unvisited_queue.append([node, node.distance])
         unvisited_queue = sorted(unvisited_queue, key=lambda vertex:vertex[1])    
 
+def shortest(v, path):
+    ''' make shortest path from v.previous'''
+    if v.previous:
+        path.append(v.previous.id)
+        shortest(v.previous, path)
+    return
+
 if __name__ == "__main__":
     
     g = Graph()
@@ -105,4 +112,8 @@ if __name__ == "__main__":
     print('All Edges - ', g.edges())
     
     dijkstra(g, 'a')
+    
+    path=['e']
+    shortest(g.graph['e'], path)
+    print('PATH -- ', path)
     

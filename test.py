@@ -39,3 +39,10 @@ print(test1.display())
 
 test.staticshow()
 print(test.show(30).b)
+
+
+
+x = "AAAdfdfdsf"
+print(x[5])
+for i in range(len(x)):
+    print(x[i])

@@ -16,26 +16,27 @@ class Stack:
 
      def size(self):
          return len(self.items)
-         
-print("Stack in Python..")
-stk = Stack()
-stk.push(2);
-stk.push(4);
 
-print("Stack contains below objects:")
-for item in stk.items:
-    print (item)
-    
-print ("Stack Empty : " + str(stk.isEmpty()))
+if __name__ == '__main__':
+    print("Stack in Python..")
+    stk = Stack()
+    stk.push(2);
+    stk.push(4);
 
-print("Stack size : {} ".format(stk.size()))
+    print("Stack contains below objects:")
+    for item in stk.items:
+        print (item)
 
-print( "Peek : " , stk.peek())
+    print ("Stack Empty : " + str(stk.isEmpty()))
 
-print("Pop : %d " % (stk.pop()))
+    print("Stack size : {} ".format(stk.size()))
 
-print( "Peek : " , stk.peek())
+    print( "Peek : " , stk.peek())
 
-print("Stack contains below objects:")
-for item in stk.items:
-    print (item)
+    print("Pop : %d " % (stk.pop()))
+
+    print( "Peek : " , stk.peek())
+
+    print("Stack contains below objects:")
+    for item in stk.items:
+        print (item)
